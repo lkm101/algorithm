@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 import unittest
 from lv2_clothes import solution
 
-class TestMarathone(unittest.TestCase):
+class TestClothes(unittest.TestCase):
   def test_solution1(self):
     params1 = 	[["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]
     expect = 5

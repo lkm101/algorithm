@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 import unittest
 from lv2_phonebook import solution
 
-class TestMarathone(unittest.TestCase):
+class TestPhonebook(unittest.TestCase):
   def test_solution1(self):
     params1 = 	["119", "97674223", "1195524421"]
     expect = False
