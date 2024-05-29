@@ -35,6 +35,8 @@ def solution(bridge_length, weight, truck_weights):
     time = 0
     # 주어지는 다리 길이 만큼 다리 배열 초기화
     bridge = [0] * bridge_length
+    # sum(bridge)는 bridge_length가 길어질 수록 연산 속도 저하됨
+    totalWeight = 0
     
     # 트럭이 모두 다리에 올라갈 때 까지
     while len(truck_weights) > 0:
@@ -42,10 +44,13 @@ def solution(bridge_length, weight, truck_weights):
         time += 1
         
         # 다리 위 맨 앞 트럭 나감
-        bridge.pop(0)
+        # 다리 위 무게에서 빼기
+        totalWeight -= bridge.pop(0)
         
         # (다리 위 모든 트럭 무게) + 그 다음 지나가려는 트럭 무게 <= 버틸 수 있는 트럭 하중
-        if sum(bridge) + truck_weights[0] <= weight:
+        if totalWeight + truck_weights[0] <= weight:
+            # 다리 위 무게에 더하기
+            totalWeight += truck_weights[0]
             # 트럭이 다리 위로 올라감
             bridge.append(truck_weights.pop(0))
         else:
