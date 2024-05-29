@@ -61,3 +61,29 @@ def solution(bridge_length, weight, truck_weights):
     time += bridge_length
     
     return time
+
+from collections import deque
+
+# deque 버전 솔루션
+# list를 사용할 때 보다 빠른 연산 가능
+def solution2(bridge_length, weight, truck_weights):
+    time = 0
+    bridge = deque([0] * bridge_length)
+    truck_weights = deque(truck_weights)
+    
+    totalWeight = 0
+    while len(truck_weights)!=0:
+        time+=1
+
+        totalWeight -= bridge.popleft()
+
+        if totalWeight + truck_weights[0] <= weight:
+            totalWeight+= truck_weights[0]
+            bridge.append(truck_weights.popleft())
+
+        else: 
+            bridge.append(0)
+            
+    time += bridge_length
+    
+    return time
